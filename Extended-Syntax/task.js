@@ -1,4 +1,4 @@
-
+'use strict';
 
 function CalculateQuadraticEquation(){
     let a = +window.a.value;
@@ -11,8 +11,11 @@ function CalculateQuadraticEquation(){
 }
 
 function GetResult(a,b,c){
-    // код для задачи №1 писать здесь
-    //return x;
+    let x = (b * b) - 4 * a * c;
+    if (x < 0) {
+        console.log(`Результат отрицательный, x = ${x}`)
+    }
+    return x;
 }
 
 function CalculateDrinkTask(){
@@ -23,9 +26,11 @@ function CalculateDrinkTask(){
 }
 
 function AskDrink(name,age){
-    // код для задачи №2 писать здесь
-    //console.log(result)
-    //return result;
+
+    let years = 2018 - age;
+    let result = (years >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+    console.log(result);
+    return result;
 }
 
 function CalculateAverageRating(){
@@ -35,6 +40,12 @@ function CalculateAverageRating(){
 }
 
 function GetAverageMark(marks){
-    // код для задачи №3 писать здесь
-    //return averageMark;
+
+    let averageMark = 0;
+    if (marks[5] === undefined) {
+        for (let i = 0; i <=4; i++) {
+            averageMark = averageMark + marks[i];
+        }
+    }
+    return averageMark / 5;
 }
