@@ -20,12 +20,12 @@ function GetResult(a,b,c){
 
 function CalculateDrinkTask(){
     let name = window.name.value;
-    let age = +window.age.value;
-    let drink = AskDrink(name, age);
+    let dateOfBirthday = new Date(window.dateOfBirthday.value);
+    let drink = AskDrink(name, dateOfBirthday);
     window.drink.textContent = drink;
 }
 
-function AskDrink(name,age){
+function AskDrink(name,dateOfBirthday){
 
     let years = 2018 - age;
     let result = (years >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
