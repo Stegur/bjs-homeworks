@@ -1,18 +1,18 @@
 'use strict';
 
-function CalculateQuadraticEquation(){
+function calculateQuadraticEquation(){
     let a = +window.a.value;
     let b = +window.b.value;
     let c = +window.c.value;
-    let result = GetResult(a,b,c);
+    let result = getResult(a,b,c);
     window.equation.textContent = `${a}*x^2 + (${b})*x + (${c}) = 0`;
     let span = window.result;
     span.textContent = "х = "+result;
 }
 
-function GetResult(a,b,c){
+function getResult(a,b,c) {
     let d = (b * b) - 4 * a * c;
-    let x =[];
+    let x = [];
 
     if (d < 0) {
         console.log(`Корней нет. Дискриминант = ${d}`);
@@ -27,14 +27,14 @@ function GetResult(a,b,c){
     return x;
 }
 
-function CalculateDrinkTask(){
-    let name = window.name.value;
+function calculateDrinkTask(){
+    let name = window.personName.value;
     let dateOfBirthday = new Date(window.dateOfBirthday.value);
-    let drink = AskDrink(name, dateOfBirthday);
+    let drink = askDrink(name, dateOfBirthday);
     window.drink.textContent = drink;
 }
 
-function AskDrink(name,dateOfBirthday){
+function askDrink(name,dateOfBirthday){
     const nowYear = 2018;
     let age = nowYear - dateOfBirthday.getFullYear() ;
     let result = (age >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
@@ -42,13 +42,13 @@ function AskDrink(name,dateOfBirthday){
     return result;
 }
 
-function CalculateAverageRating(){
+function calculateAverageRating(){
     let marks = window.marks.value.split("").map(Number);
-    let averageMark = GetAverageMark(marks);
+    let averageMark = getAverageMark(marks);
     window.averageMark.textContent = averageMark;
 }
 
-function GetAverageMark(marks){
+function getAverageMark(marks){
 
     let averageMark = 0;
         for (let i = 0; i < marks.length; i++) {
