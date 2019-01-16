@@ -13,35 +13,41 @@ function calculateMortgage() {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
 
-    let p, c, a, d;
+    let p, c, a;
 
     if (parseFloat(percent)) {
-        p = parseFloat(percent);
+        p = parseFloat(percent) / 100;
     } else {
         return `Параметр 'Процентная ставка' содержит неправильное значение '${percent}'`;
     }
-    if (parseFloat(contribution)) {
-        c = parseFloat(contribution);
+    if (parseInt(contribution) || contribution == 0) {
+        c = (parseInt(contribution)) ? parseInt(contribution) : 0;
     } else {
         return `Параметр 'Начальный взнос' содержит неправильное значение '${contribution}'`;
     }
-    if (parseFloat(amount)) {
-        a = parseFloat(amount);
+    if (parseInt(amount)) {
+        a = parseInt(amount);
     } else {
         return `Параметр 'Общая стоимость' содержит неправильное значение '${amount}'`;
     }
-    if (parseFloat(date)) {
-        d = parseFloat(date);
-    } else {
-        return `Параметр 'Срок ипотеки' содержит неправильное значение '${date}'`;
-    }
 
+    let d = new Date(date);
+    let now = new Date();
+    let yearFrom = d.getFullYear();
+    let yearTo = now.getFullYear();
+    let monthFrom = d.getMonth();
+    let monthTo = now.getMonth();
 
-   console.log( p);
-   console.log( c);
-   console.log( a);
-   console.log( d);
-    //return totalAmount;
+    let months = (yearFrom - yearTo) * 12 + (monthFrom - monthTo);
+
+    let sum =  a - contribution;
+
+    let bill = amount*(p+p/(((1+p)^months)-1));
+
+    let totalAmount = sum + (bill * months);
+
+   // console.log(months);
+    return totalAmount;
 }
 
 function sayHello() {
@@ -52,6 +58,15 @@ function sayHello() {
 }
 
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    //return greeting;
+
+    let login;
+
+    if (name === 'null' || name === "" || name === 'undefined') {
+        login = 'Аноним';
+    } else {
+        login = name;
+    }
+
+    let greeting = `Привет, мир! Меня зовут ${login}`;
+    return greeting;
 }
