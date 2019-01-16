@@ -45,7 +45,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function sayHello() {
-    let name = window.name.value;
+    let name = window.personName.value;
     let greeting = getGreeting(name);
     let span = window.helloResult;
     span.textContent = greeting;
