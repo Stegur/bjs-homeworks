@@ -16,7 +16,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     let p, c, a;
 
     if (parseFloat(percent)) {
-        p = parseFloat(percent) / 100;
+        p = parseFloat(percent / 100 / 12);
     } else {
         return `Параметр 'Процентная ставка' содержит неправильное значение '${percent}'`;
     }
@@ -32,22 +32,34 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     }
 
     let d = new Date(date);
-    let now = new Date();
-    let yearFrom = d.getFullYear();
-    let yearTo = now.getFullYear();
-    let monthFrom = d.getMonth();
-    let monthTo = now.getMonth();
+    let today = new Date();
+    let oneDay = 1000606024;
+    let result = Math.floor((d - today) / oneDay);
+    let n = Math.floor(result / 30);
 
-    let months = (yearFrom - yearTo) * 12 + (monthFrom - monthTo);
+    let sum = a * (p + p / (Math.pow(1 + p, n) - 1));
 
-    let sum =  a - contribution;
+    let debt = a - c;
 
-    let bill = amount*(p+p/(((1+p)^months)-1));
+    let totalAmount = sum + debt;
 
-    let totalAmount = sum + (bill * months);
+    // let yearFrom = d.getFullYear();
+    // let yearTo = now.getFullYear();
+    // let monthFrom = d.getMonth();
+    // let monthTo = now.getMonth();
+    //
+    // let months = (yearFrom - yearTo) * 12 + (monthFrom - monthTo);
+    //
+    // let sum =  a - c;
+    //
+    // let bill = amount*(p+p/(((1+p)^months)-1));
+    //
+    // let totalAmount = sum + (bill * months);
 
    // console.log(months);
-    return totalAmount;
+
+
+    return totalAmount.toFixed(2);
 }
 
 function sayHello() {
