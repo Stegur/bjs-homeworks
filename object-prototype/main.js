@@ -3,12 +3,18 @@ function initCheckBirthday() {
 
     const result = checkBirthday(birthday) ? "Да" : "Нет";
 
-    document.getElementById('disclaimer').innerHTML = result;   
+    document.getElementById('disclaimer').innerHTML = result;
 }
 
 function checkBirthday(birthday) {
     const now = Date.now();
     const dateOfBirth = new Date(birthday);
+    const birthdi = dateOfBirth.getTime(); // нельзя уставновить имя переменной birthday
+    const diff = now - birthdi;
+    const average = ((3 * 31536000000) + 31622400000) / 4;
+    const age = Math.round(diff / average);
+
+    return age >= 18;
 }
 
 function initPrintAnimalSound() {
@@ -18,7 +24,7 @@ function initPrintAnimalSound() {
 
     const result = getAnimalSound(animal);
 
-    document.getElementById('sound').innerHTML = result;   
+    document.getElementById('sound').innerHTML = result;
 }
 
 function getAnimalSound(animal) {
@@ -32,7 +38,7 @@ function getAnimalSound(animal) {
 }
 
 function initCalculateStatement() {
-    for (var idx = 0; idx < 3; idx++) {
+    for (let idx = 0; idx < 3; idx++) {
         const marks = document.getElementById('learner-' + idx).value.split(',');
 
         const average = getAverageMark(marks);
