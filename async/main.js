@@ -23,7 +23,7 @@ function setAlarm(time, callback) {
         const hoursNow = now.getHours();
         const minutesNow = now.getMinutes();
 
-        const [hoursAlarm, minutesAlarm] = time.split(':'); // правильно ли использовал дкструктцризацию?
+        const [hoursAlarm, minutesAlarm] = time.split(':');
 
         if (hoursAlarm === hoursNow && minutesAlarm === minutesNow) {
             callback();
@@ -32,14 +32,17 @@ function setAlarm(time, callback) {
 }
 
 
-const goodMorning = () => alert('Доброе утро!'),
-    checkTime = setAlarm('07:00', goodMorning);
+// const goodMorning = () => alert('Доброе утро!'),
+//     checkTime = setAlarm('07:00', goodMorning);
+//
+// /*
+// 	передаём в checkTime информацию о
+// 	текущем времени системы. Так как 07:00 и 07:30,
+// 	goodMorning не вызывается
+// */
+// checkTime('07:30');
+//
+// checkTime('07:00'); // Доброе утро
 
-/*
-	передаём в checkTime информацию о
-	текущем времени системы. Так как 07:00 и 07:30,
-	goodMorning не вызывается
-*/
-checkTime('07:30');
 
-checkTime('07:00'); // Доброе утро
+setDailyRhythm('07:00', '23:00');
