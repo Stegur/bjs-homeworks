@@ -1,13 +1,11 @@
 function compareArrays(arr1, arr2) {
-    let status;
-    if (arr1.length > arr2.length || arr1.length < arr2.length) {
-        status = false;
+    if (arr1.length !== arr2.length) {
+        return console.log(false);
     } else {
-        for (let i = 0; i < arr1.length; i++) {
-            status = arr1[i] === arr2[i];
-        }
+        arr1.every( (el) => {
+            return console.log(el === arr2); // не придумал как сравнить...
+        })
     }
-    return status;
 
 }
 
@@ -36,8 +34,8 @@ function memoize(fn, limit) {
             }
         }
 
-        if (results.length > limit) {
-            results.length = limit;
+        while (results.length > limit) {
+            results.shift();
         }
 
         results.push({
@@ -55,7 +53,6 @@ function memoize(fn, limit) {
 
 
 const sum = (a, b) => a + b;
-
 const mSum = memoize(sum, 2); // 2 результата хранятся в памяти
 
 // Вызов этих функций даёт один и тот же результат
