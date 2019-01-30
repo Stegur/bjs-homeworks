@@ -6,14 +6,8 @@ function setDailyRhythm(wakeUpTime, bedTime) {
     const wakeUp = setAlarm(wakeUpTime, goodMorning);
     const goBed = setAlarm(bedTime, goSleep);
 
-    const now = new Date();
-    const hoursNow = now.getHours();
-    const minutesNow = now.getMinutes();
-
-    const time = `${hoursNow}:${minutesNow}`;
-
-    setInterval(wakeUp(time), 1000);
-    setInterval(goBed(time), 1000);
+    setInterval(wakeUp, 10000);
+    setInterval(goBed, 10000);
 }
 
 
@@ -45,4 +39,4 @@ function setAlarm(time, callback) {
 // checkTime('07:00'); // Доброе утро
 
 
-setDailyRhythm('07:00', '23:00');
+setDailyRhythm('22:26', '22:27');
