@@ -1,9 +1,9 @@
 function compareArrays(arr1, arr2) {
     if (arr1.length !== arr2.length) {
-        return console.log(false);
+        return false;
     } else {
-        arr1.every( (el) => {
-            return console.log(el === arr2); // не придумал как сравнить...
+        arr1.every( (el,  index) => {
+            return el === arr2[index];
         })
     }
 
@@ -21,10 +21,8 @@ function memoize(fn, limit) {
         result: 0,
     }];
 
-    console.log('Рзультат берётся из памяти');
-
-    return function (...fn) {
-        console.log('Функция вызвана не из памяти');
+    return function (a, b) {
+        //console.log('Функция вызвана не из памяти');
         for (let i = 0; i < results.length; i++) {
 
             let args = results[i].args;
@@ -39,20 +37,18 @@ function memoize(fn, limit) {
         }
 
         results.push({
-            args: arguments,
-            result: fn(arguments)
+            args: [a, b],
+            result: fn(a, b)
         });
 
-        console.log(results);
-
-        return fn(arguments);
+        return fn(a, b);
 
     };
 
 }
 
 
-const sum = (a, b) => a + b;
+const sum = (a, b) => a + b; // ЗДЕСЬ, наверное не хватаело console.log(), так как результата небыло видно...
 const mSum = memoize(sum, 2); // 2 результата хранятся в памяти
 
 // Вызов этих функций даёт один и тот же результат
