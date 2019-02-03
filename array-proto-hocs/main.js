@@ -23,7 +23,7 @@ function memoize(fn, limit) {
             }
         }
 
-        results.slice(0, limit);
+        results = results.slice(0, limit);
 
 
         results.unshift({
